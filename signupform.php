@@ -21,6 +21,11 @@ include 'header.php';
 		echo "username already taken";
 	}
 	
+	else if(strpos($url, 'error=password') !== false)
+	{
+		echo "your passwords did not match";
+	}
+	
 	if(isset($_SESSION['id']))
 	{
 		echo "you are already logged in";
@@ -30,6 +35,7 @@ include 'header.php';
 	<input type='text' name='email' placeholder='email'><br>
 	<input type='text' name='uid' placeholder='username'><br>
 	<input type='password' name='pwd' placeholder='password'><br>
+	<input type='password' name='pwdCheck' placeholder='retype-password'><br>
 	<button type='submit'>Sign Up</button>
 	</form>";
 	}

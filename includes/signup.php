@@ -5,6 +5,7 @@ include '../dbconfig.php';
 $email = $_POST['email'];
 $uid = $_POST['uid'];
 $pwd=$_POST['pwd'];
+$pwdCheck = $_POST['pwdCheck'];
 
 if (empty($email))
 {
@@ -24,6 +25,11 @@ if (empty($pwd))
 	exit();
 }
 
+if ($pwd != $pwdCheck)
+{
+	header("Location: ../signupform.php?error=password");
+	exit();
+}
 
 else{
 	$sqlCheck = "SELECT email FROM user WHERE email='$email'";

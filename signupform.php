@@ -5,6 +5,22 @@ include 'header.php';
 
 <?php
 
+	$url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	if (strpos($url, 'error=empty') !== false)
+	{
+		echo "fill out ALL of the fields in the form";
+
+	}
+	else if (strpos($url, 'error=email') !== false)
+	{
+		echo "an account with this email already exists";
+	}
+	
+	else if (strpos($url, 'error=username') !== false)
+	{
+		echo "username already taken";
+	}
+	
 	if(isset($_SESSION['id']))
 	{
 		echo "you are already logged in";

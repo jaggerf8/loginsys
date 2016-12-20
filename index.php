@@ -17,7 +17,7 @@ echo "your password is incorrect";
 
 else if(isset($_SESSION['id']))
 {
-	echo $_SESSION['id'];
+	header("Location: profile.php");
 }
 
 else {

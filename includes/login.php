@@ -6,18 +6,19 @@ $uid = $_POST['uid'];
 $pwd=$_POST['pwd'];
 
 
-$sql = "SELECT * FROM  user WHERE uid='$uid'";
+$sql = "SELECT * FROM user WHERE uid='$uid'";
 $result = $conn->query($sql);
+
 if(!$row=$result->fetch_assoc())
 {
-	header("Location: ../index.php?error=username");
+        header("Location: ../index.php?error=username");
 	exit();
 }
-else 
+else
 {
-$hashpass = $row['pwd'];
-$unhash = password_verify($pwd, $hashpass);
 
+$hashpass = $row['password'];
+$unhash = password_verify($pwd, $hashpass);
 
 if ($unhash == 0)
 {
@@ -37,8 +38,7 @@ echo "Your username is incorrect.";
 else {
  $_SESSION['id'] = $row['memberID'];
 }
-
-header("Location: ../index.php");
+ header("Location: ../index.php");
 }
 }
 ?>

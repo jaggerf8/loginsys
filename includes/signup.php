@@ -45,8 +45,9 @@ else{
 	}	
 	else
 	{
+		$passhash = password_hash($pwd, PASSWORD_DEFAULT);
 		$sql = "INSERT INTO user (uid, email, password) 
-		VALUES ('$uid', '$email', '$pwd')";
+		VALUES ('$uid', '$email', '$passhash')";
 		$result = $conn->query($sql);
 
 		header("Location: ../index.php");

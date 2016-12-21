@@ -56,3 +56,12 @@ margin-left:auto;
 margin-right:auto;
 
 }
+#pic{
+margin-top:5px;
+}
+
+#pic img {
+width:200px;
+height:200px;
+}
+

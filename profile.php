@@ -10,7 +10,9 @@ $resultimg = $result->fetch_assoc();
 $img = $resultimg['profileimg'];
 $ext = $resultimg['ext'];
 $user=$resultimg['uid'];
-
+?>
+<div id="pic">
+<?php
 if ($img != 0)
 {
 echo "<img src='includes/uploads/profile" . $id . "." . "
@@ -20,7 +22,9 @@ else
 {
 echo "<img src='uploads/avatar.jpeg'/>";
 }
-
+?>
+</div>
+<?php
 echo "<br>" . $user;
 ?>
 <br><br><br>

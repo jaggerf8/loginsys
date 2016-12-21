@@ -5,7 +5,7 @@
 }
 
 header {
- width: 100%;
+ width: 960px;
  height: 60px;
  background-color: #d3d3d3;
 }
@@ -50,4 +50,9 @@ nav ul form button{
 
 }
 
+body {
+width:960px;
+margin-left:auto;
+margin-right:auto;
 
+}

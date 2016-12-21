@@ -1,4 +1,7 @@
 <?php
+include 'dbconfig.php';
+session_start();
+$id = $_SESSION['id'];
 
 if(isset($_POST['submit']))
 {
@@ -21,12 +24,18 @@ if(isset($_POST['submit']))
 		{
 			if($fileSize < 1000000)
 			{
-				$fileNewName = uniqid('', true) . "." .
+				$fileNewName = "profile" . $id . "." .
 				$fileActualExt;
-				$fileDest = '../uploads/' . $fileNewName;
+				$fileDest =
+				"/afs/cad.njit.edu/u/j/s/jsf22/public_html/loginsys/includes/uploads/" . $fileNewName;
 
 				move_uploaded_file($fileTmpName, $fileDest);
-				header("Location: ../profile.php?uploadsuccess");
+				$sql = "UPDATE  user SET profileimg=1,
+				ext='$fileActualExt' WHERE
+				memberID='$id'";
+				$conn->query($sql);
+				
+				header("Location: ../profile.php");
 
 			}
 			else {
@@ -38,7 +47,8 @@ if(isset($_POST['submit']))
 		}
 	}
 	else {
-		echo "you cannot upload upload files of that type";
+		echo "you did not upload a file or attempted to upload a wrong
+		file type, please use 'jpg', 'jpeg', or , 'png' file types.";
 	}
 }
 

@@ -52,19 +52,11 @@ else{
 	else
 	{
 		$passhash = password_hash($pwd, PASSWORD_DEFAULT);
-		$sql = "INSERT INTO user (uid, email, password) 
-		VALUES ('$uid', '$email', '$passhash')";
+		$sql = "INSERT INTO user (uid, email, password, profileimg) 
+		VALUES ('$uid', '$email', '$passhash', 0)";
 		$conn->query($sql);
 
-		$sql = "SELECT * FROM user WHERE uid='$uid'";
-		$result=$conn->query($sql);
-		while ($row= mysqli_fetch_assoc($result))
-		{
-			$userid = $row['memberID'];
-			$sql = "INSERT INTO profileimg (userid, status) VALUES ('$userid', 1)";
-			$conn->query($sql);
-			header("Location: ../index.php");
-		}
+		header("Location: ../index.php?signedup");
 	}
 }
 ?>

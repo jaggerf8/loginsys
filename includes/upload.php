@@ -1,5 +1,5 @@
 <?php
-include 'dbconfig.php';
+include '../dbconfig.php';
 session_start();
 $id = $_SESSION['id'];
 

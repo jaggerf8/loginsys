@@ -14,7 +14,10 @@ else if (strpos($url, 'error=password') !== false)
 {
 echo "your password is incorrect";
 }
-
+else if (strpos($url, 'signedup') !==false)
+{
+echo "you just signed up! now try logging in";
+}
 else if(isset($_SESSION['id']))
 {
 	header("Location: profile.php");
